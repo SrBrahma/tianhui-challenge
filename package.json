@@ -6,6 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/react": "11.10.4",
+    "@mantine/core": "5.5.0",
+    "@mantine/hooks": "5.5.0",
     "date-fns": "^2.11.1",
     "gray-matter": "^4.0.2",
     "next": "latest",
