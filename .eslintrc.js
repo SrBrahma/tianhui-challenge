@@ -26,7 +26,8 @@ module.exports = {
     "/.eslintrc.js" // Ignore itself
   ],
   "rules": {
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/require-await": "off"
   }
 };
 
