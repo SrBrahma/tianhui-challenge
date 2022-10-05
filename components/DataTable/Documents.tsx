@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import type { ButtonProps } from '@mantine/core';
 import { Button, Group, Image, Paper, Text } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import { IconChevronRight } from '@tabler/icons';
 import type { UserDocument, UserDocuments } from '../../types/User';
 
 
-export const Document = ({ document, visible }: { document: UserDocument; visible: boolean }) => {
+export const Document = ({ document, visible = true }: {
+  document: UserDocument;
+  /** @default true */
+  visible?: boolean;
+}) => {
   const imageSize = 45;
 
   return (
@@ -29,18 +32,24 @@ export const Document = ({ document, visible }: { document: UserDocument; visibl
   );
 };
 
-const OpenDocumentsButton = (props: ButtonProps) => (
+// Having `ButtonProps` wasn't providing all the Buttons props.
+const OpenDocumentsButton = ({ onClick }: { onClick: () => void }) => (
   <Button
     rightIcon={<IconChevronRight size={20}/>}
     style={{ position: 'absolute' }}
     variant='gradient'
-    {...props}
+    onClick={onClick}
   >
     {'Documents'}
   </Button>
 );
 
-export const Documents = ({ documents }: { documents: UserDocuments }) => {
+type DocumentsProps = {
+  documents: UserDocuments;
+  onOpenModalPress: () => void;
+};
+
+export const Documents = ({ documents, onOpenModalPress }: DocumentsProps) => {
 
   const [fits, setFits] = useState(true);
   const viewPortWidth = useViewportSize().width;
@@ -59,7 +68,7 @@ export const Documents = ({ documents }: { documents: UserDocuments }) => {
     <Group noWrap>
       {documents.map((document) => <Document visible={fits} key={document.id} document={document}/>)}
       <div ref={ref}/>
-      {!fits && <OpenDocumentsButton/>}
+      {!fits && <OpenDocumentsButton onClick={onOpenModalPress}/>}
     </Group>
   );
 };

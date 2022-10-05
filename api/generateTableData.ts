@@ -27,6 +27,14 @@ export function generateData({ number }: { number: number }): Users {
       name: 'Letter.pdf',
       image: 'https://www.nal.usda.gov/exhibits/speccoll/files/thumbnails/4d28334e14a44a47b3ada8c467ff5c72.jpg',
     },
+    {
+      name: 'Invoice.pdf',
+      image: 'https://assets.website-files.com/609d5d3c4d120e9c52e52b07/609d5d3c4d120e370de52b70_invoice-lp-light-border.png',
+    },
+    {
+      name: 'Contract.pdf',
+      image: 'https://resources.gonitro.com/dims4/default/6adaf0e/2147483647/strip/true/crop/680x880+0+0/resize/680x880!/format/jpg/quality/90/?url=http%3A%2F%2Fnitro-brightspot.s3.amazonaws.com%2F16%2F31%2F7a6b84a34664b6d2a9460e252f41%2Fpdf-template-simple-contract-template.jpg',
+    },
   ].map((e) => ({ ...e, id: faker.datatype.uuid() }));
 
   return ([...Array(number)]).map((_, index) => ({

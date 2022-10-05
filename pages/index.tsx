@@ -31,7 +31,7 @@ export default function Home({ users }: Props) {
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   return {
     props: {
-      users: generateData({ number: 4 }),
+      users: generateData({ number: 5 }),
     },
   };
 };
