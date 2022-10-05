@@ -1,13 +1,11 @@
-<!-- <img src=".logo.png" alt=visionmateHenrique/><br/> -->
-
 <div align="center">
 
 [![TypeScript](https://badgen.net/npm/types/env-var)](http://www.typescriptlang.org/)
 </div>
 
-# Tianhui Li's Challenge
+# Tianhui's Challenge
 
-**NextJS + TS + Mantine** challenge for Tianhui Li, aka Michael Li.
+**NextJS + TS + Mantine** challenge
 
 <br/>
 
