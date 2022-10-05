@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import type { ButtonProps } from '@mantine/core';
 import { Button, Group, Image, Paper, Text } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import { IconChevronRight } from '@tabler/icons';
@@ -32,13 +33,15 @@ export const Document = ({ document, visible = true }: {
   );
 };
 
-// Having `ButtonProps` wasn't providing all the Buttons props.
-const OpenDocumentsButton = ({ onClick }: { onClick: () => void }) => (
+const OpenDocumentsButton = ({ onClick, ...rest }: ButtonProps & {
+  // Just `ButtonProps` wasn't providing all the Buttons props.
+  onClick: () => void;
+}) => (
   <Button
     rightIcon={<IconChevronRight size={20}/>}
-    style={{ position: 'absolute' }}
     variant='gradient'
     onClick={onClick}
+    {...rest}
   >
     {'Documents'}
   </Button>
@@ -68,7 +71,7 @@ export const Documents = ({ documents, onOpenModalPress }: DocumentsProps) => {
     <Group noWrap>
       {documents.map((document) => <Document visible={fits} key={document.id} document={document}/>)}
       <div ref={ref}/>
-      {!fits && <OpenDocumentsButton onClick={onOpenModalPress}/>}
+      {!fits && <OpenDocumentsButton onClick={onOpenModalPress} style={{ position: 'absolute' }}/>}
     </Group>
   );
 };
